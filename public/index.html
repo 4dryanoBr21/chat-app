@@ -32,37 +32,39 @@
     </div>
 
     <script type="text/javascript">
-        var socket = io('http://localhost:3000');
+        var socket = io('http://localhost:3000'); // informando ao socker.io qual endereço ele deve atuar
 
         function renderMessage(message) {
-            $('.messages').append('<div class="message"><strong>'+ message.author +'</strong>: '+ message.message +'</div>');
+            $('.messages').append('<div class="message"><strong>'+ message.author +'</strong>: '+ message.message +'</div>'); // alterando o conteúdo da div message para as mesnagens do array
         }
 
         socket.on('previousMessages', function(messages) {
             for (message of messages) {
-                renderMessage(message);
+                renderMessage(message); // renderizando as mesagens mesmo após atualizar a pagina
             }
         })
 
         socket.on('newMessage', function(message) {
-            renderMessage(message);
+            renderMessage(message); // renderizando as novas mesnagens na div
         });
 
         $('#chat').submit(function(event) {
-            event.preventDefault();
+            event.preventDefault(); // gatilho do botão submit
 
-            var author = $('input[name=username]');
-            var message = $('input[name=message]');
+            // declaração de variaves e valores
+            var author = $('input[name=username]'); // variavel de quem escreveu a mensagen
+            var message = $('input[name=message]'); // a mensagen
 
             if (author.length && message.length) {
                 var messageObject = {
                     author: author.val(),
                     message: message.val(),
+                    // capturando os valores de author e message se forem maiores do que zero
                 };
 
-                renderMessage(messageObject);
+                renderMessage(messageObject); // função que renderiza tudo na div
 
-                socket.emit('sendMessage', messageObject);
+                socket.emit('sendMessage', messageObject); // socket.io emitindo tudo na div em tempo real
             }
         });
     </script>
