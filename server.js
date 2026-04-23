@@ -32,4 +32,4 @@ io.on('connection', socket => {
     })
 });
 
-server.listen(3000); // porta do servidor
+server.listen(3000, '0.0.0.0'); // porta do servidor

@@ -32,7 +32,7 @@
     </div>
 
     <script type="text/javascript">
-        var socket = io('http://localhost:3000'); // informando ao socker.io qual endereço ele deve atuar
+        var socket = io(); // informando ao socker.io qual endereço ele deve atuar
 
         function renderMessage(message) {
             $('.messages').append('<div class="message"><strong>'+ message.author +'</strong>: '+ message.message +'</div>'); // alterando o conteúdo da div message para as mesnagens do array
