@@ -1,0 +1,17 @@
+services:
+  chat-app:
+    image: node:22-alpine
+    container_name: chat-lambari
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    command: sh -c "npm install && npm start"
+    restart: unless-stopped
+
+volumes:
+  node_modules:
