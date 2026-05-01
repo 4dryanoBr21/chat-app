@@ -40,12 +40,12 @@
 
         socket.on('previousMessages', function(messages) {
             for (message of messages) {
-                renderMessage(message); // renderizando as mesagens mesmo após atualizar a pagina
+                renderMessage(message); // renderizando as mensagens mesmo após atualizar a pagina
             }
         })
 
         socket.on('newMessage', function(message) {
-            renderMessage(message); // renderizando as novas mesnagens na div
+            renderMessage(message); // renderizando as novas mesagens na div
         });
 
         $('#chat').submit(function(event) {
